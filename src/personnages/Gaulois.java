@@ -5,7 +5,8 @@ public class Gaulois {
 	private String nom;
 	private int force;
 	private int effetPotion;
-
+	
+	
 	public Gaulois(String nom, int force, int effetPotion) {
 		this.nom = nom;
 		this.force = force;
@@ -21,7 +22,7 @@ public class Gaulois {
 	}
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "� " + texte + "�");
+		System.out.println(prendreParole() + "� " + texte + "�");
 	}
 
 	private String prendreParole() {
@@ -29,10 +30,15 @@ public class Gaulois {
 	}
 
 	public void frapper(Romain romain) {
-		System.out.println(nom + " envoie un grand coup dans la m�choire de " + romain.getNom());
+		System.out.println(nom + " envoie un grand coup dans la m�choire de " + romain.getNom());
 		romain.recevoirCoup(force / 3);
 	}
 
+	
+//	La méthode toString permet de transformer l’achage de l’objet sous
+//	sa forme nomDuPaquage.nomDeLaCLasse@adresseMemoire en chaine de
+//	caractère correspondant à l’état de l’objet.
+	
 	@Override
 	public String toString() {
 		
