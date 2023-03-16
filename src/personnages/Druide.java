@@ -34,6 +34,9 @@ public class Druide {
 	    Random random = new Random();
 	    int val = random.nextInt(effectPotionMax);
 	    
+	    while(val<effectPotionMin) {
+	    	val=random.nextInt(effectPotionMax);
+	    }
 	    
 	    if (val>=7) {
 	    	parler("J'ai préparé une super potion de force " + val);
@@ -53,7 +56,7 @@ public class Druide {
 	public static void main(String[] args) {
 		Druide Panoramix;
 		Panoramix= new Druide ("Panoramix",5,10);
-		Panoramix.preparerPotion(10);
+		Panoramix.preparerPotion(5,10);
 		System.out.println(Panoramix);
 		
 	}
