@@ -21,6 +21,10 @@ public class Gaulois {
 		return effetPotion;
 	}
 	
+	public void setEffetPotion(int effetPotion) {
+		this.effetPotion=effetPotion;
+	}
+	
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "< " + texte + ">");
 	}
@@ -36,8 +40,10 @@ public class Gaulois {
 
 	public int boirePotion(Druide forcePotion) {
 		effetPotion=forcePotion.getforcePotion();
-		if(effetPotion==3)
-			parler("Merci Druide, je sens que ma force est 3 fois décuplée");
+		if(effetPotion>=3)
+			parler("Merci Druide, je sens que ma force est "+ effetPotion +" fois décuplée");
+		else
+			parler("L'effet de cette potion est seulement " + effetPotion);
 		return effetPotion;
 	}
 	
