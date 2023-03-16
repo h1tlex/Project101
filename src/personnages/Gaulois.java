@@ -4,7 +4,7 @@ public class Gaulois {
 
 	private String nom;
 	private int force;
-	private int effetPotion;
+	private int effetPotion=1;
 	
 	
 	public Gaulois(String nom, int force, int effetPotion) {
@@ -22,7 +22,7 @@ public class Gaulois {
 	}
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "� " + texte + "�");
+		System.out.println(prendreParole() + "< " + texte + ">");
 	}
 
 	private String prendreParole() {
@@ -30,10 +30,16 @@ public class Gaulois {
 	}
 
 	public void frapper(Romain romain) {
-		System.out.println(nom + " envoie un grand coup dans la m�choire de " + romain.getNom());
-		romain.recevoirCoup(force / 3);
+		System.out.println(nom + " envoie un grand coup dans la machoire de " + romain.getNom());
+		romain.recevoirCoup((force / 3)*effetPotion);
 	}
 
+	public int boirePotion(Druide forcePotion) {
+		effetPotion=forcePotion.getforcePotion();
+		if(effetPotion==3)
+			parler("Merci Druide, je sens que ma force est 3 fois décuplée");
+		return effetPotion;
+	}
 	
 //	La méthode toString permet de transformer l’achage de l’objet sous
 //	sa forme nomDuPaquage.nomDeLaCLasse@adresseMemoire en chaine de
@@ -47,7 +53,11 @@ public class Gaulois {
 
 	public static void main(String[] args) {
 		Gaulois asterix;
-		asterix= new Gaulois ("Asterix",8,2);
+		asterix= new Gaulois ("Asterix",8,1);
+		Druide Panoramix= new Druide ("Panoramix",5,10,3);
+
+		asterix.effetPotion=asterix.boirePotion(Panoramix);
+
 		System.out.println(asterix);
 		
 	}

@@ -8,15 +8,24 @@ public class Druide {
 	private int effetPotionMax;
 	private int forcePotion = 1;
 	
-	public Druide(String nom, int effetPotionMin, int effetPotionMax) {
+	public Druide(String nom, int effetPotionMin, int effetPotionMax, int forcePotion) {
 		this.nom = nom;
 		this.effetPotionMin = effetPotionMin;
 		this.effetPotionMax = effetPotionMax;
+		this.forcePotion = forcePotion;
 
 		parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller d'une force " + effetPotionMin + " � "
 				+ effetPotionMax + ".");
 	}
+	
+	public int getforcePotion() {
+		return forcePotion;
+	}
 
+	public void setforcePotion() {
+		this.forcePotion=forcePotion;
+	}
+	
 	public String getNom() {
 		return nom;
 	}
@@ -47,6 +56,8 @@ public class Druide {
 	    return val;
 	}
 
+
+	
 	@Override
 	public String toString() {
 		
@@ -55,7 +66,7 @@ public class Druide {
 	
 	public static void main(String[] args) {
 		Druide Panoramix;
-		Panoramix= new Druide ("Panoramix",5,10);
+		Panoramix= new Druide ("Panoramix",5,10,3);
 		Panoramix.preparerPotion(Panoramix.effetPotionMin,Panoramix.effetPotionMax);
 		System.out.println(Panoramix);
 		

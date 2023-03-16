@@ -1,7 +1,9 @@
 package histoire;
 
+import personnages.Druide;
 import personnages.Gaulois;
 import personnages.Romain;
+import personnages.Chef;
 
 public class Scenario {
 
@@ -15,7 +17,6 @@ public class Scenario {
 	asterix.frapper(minus);
 	asterix.frapper(minus);
 	asterix.frapper(minus);
-	
 	
 	}
 
