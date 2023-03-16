@@ -56,7 +56,7 @@ public class Druide {
 	public static void main(String[] args) {
 		Druide Panoramix;
 		Panoramix= new Druide ("Panoramix",5,10);
-		Panoramix.preparerPotion(5,10);
+		Panoramix.preparerPotion(Panoramix.effetPotionMin,Panoramix.effetPotionMax);
 		System.out.println(Panoramix);
 		
 	}
