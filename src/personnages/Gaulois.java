@@ -17,6 +17,10 @@ public class Gaulois {
 		return nom;
 	}
 	
+	public int getForce() {
+		return force;
+	}
+	
 	public int getEffetPotion() {
 		return effetPotion;
 	}
@@ -38,6 +42,8 @@ public class Gaulois {
 		romain.recevoirCoup((force / 3)*effetPotion);
 	}
 
+	
+	
 	public int boirePotion(Druide forcePotion) {
 		effetPotion=forcePotion.getforcePotion();
 		if(effetPotion>=3)
@@ -46,6 +52,8 @@ public class Gaulois {
 			parler("L'effet de cette potion est seulement " + effetPotion);
 		return effetPotion;
 	}
+	
+	
 	
 //	La méthode toString permet de transformer l’achage de l’objet sous
 //	sa forme nomDuPaquage.nomDeLaCLasse@adresseMemoire en chaine de

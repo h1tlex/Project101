@@ -52,10 +52,10 @@ public class Druide {
 		parler("Je vais aller préparer une petite potion...");
 		
 	    Random random = new Random();
-	    int val = random.nextInt(effectPotionMax);
+	    int val = random.nextInt(effectPotionMax+1);
 	    
 	    while(val<effectPotionMin) {
-	    	val=random.nextInt(effectPotionMax);
+	    	val=random.nextInt(effectPotionMax+1);
 	    }
 	    
 	    if (val>=7) {
@@ -64,7 +64,7 @@ public class Druide {
 	    else {
 	    	parler("Je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force " + val);
 	    }
-	    
+	    //Creates forcePotion
 	    setForcePotion(val);
 	    return val;
 	}
