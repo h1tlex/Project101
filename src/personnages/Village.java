@@ -7,7 +7,7 @@ public class Village {
 	private String nom;
 	private Chef chef;
 	private int nbVillageois = 0;
-	private int nbVillageoisMaximum=10;
+	private int nbVillageoisMaximum=30;
 	private	Gaulois villageois[] = new Gaulois[nbVillageoisMaximum];
 	
 	
@@ -30,6 +30,10 @@ public class Village {
 	public Gaulois getVillageois(int i) {
 		return villageois[i];
 	}
+	
+	
+
+	
 	
 	public Gaulois[] ajouterHabitant(Gaulois gaulois) {
 		
@@ -63,9 +67,10 @@ public class Village {
 		return null;
 	}
 	
-	public void printVillageois() {
+	public void afficherVillageois() {
+		System.out.println("Les membres du village:");
 	    for (int i = 0; i < nbVillageois; i++) {
-	        System.out.println(villageois[i]);
+	        System.out.println("-" + villageois[i].getNom());
 	    }
 	}
 	
@@ -78,23 +83,29 @@ public class Village {
 	
 	public static void main(String[] args) {
 		
-		int nbVillageoisMaximum=10;
-		Gaulois villageois[]=new Gaulois [nbVillageoisMaximum];
-		int nbVillageois=0;
+		Gaulois villageDesIrreductibles[] = new Gaulois[30];
+		
 	    Village village = new Village();
 	    
+	    //TODO ajouterChef
+	    // I can't add a Chef to the village since ajouterHabitant only adds gaulois types
+	    // I think maybe there is one way to do it in a single function or i can create ajouterChef method
+		Chef Abraracourcix = new Chef("Abraracourcix",6,village);
+
 	    Gaulois habitant1 = new Gaulois("Asterix",10,2);
 	    village.ajouterHabitant(habitant1);
-	    
 	    Gaulois habitant2 = new Gaulois("Obelix",12,3);
 	    village.ajouterHabitant(habitant2);
 	    
-	    village.printVillageois();
+	    village.afficherVillageois();
 	    
-	    System.out.println("\n test trouver habitant :");
-	    for(int i=0; i<nbVillageoisMaximum;i++) {
-	    	System.out.println(village.trouverHabitant(i));
-		}
+	    Gaulois gaulois = village.trouverHabitant(30);
+
+	    
+//	    System.out.println("\n test trouver habitant :");
+//	    for(int i=0; i<village.nbVillageoisMaximum;i++) {
+//	    	System.out.println(village.trouverHabitant(i));
+//		}
 		
 	}
 	
