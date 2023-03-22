@@ -37,19 +37,36 @@ public class Village {
 	
 	public Gaulois[] ajouterHabitant(Gaulois gaulois) {
 		
+		Chef ajouterChef=new Chef(gaulois.getNom(), gaulois.getForce(),gaulois.getEffetPotion(),this);
+		Gaulois ajouterGaulois= new Gaulois(gaulois.getNom(), gaulois.getForce(), gaulois.getEffetPotion());
 		
 		if (nbVillageois<nbVillageoisMaximum) {
-	
-			for(int i=0;i<nbVillageoisMaximum;i++) {
-				if(villageois[i] == null) {
-					villageois[i] = new Gaulois(gaulois.getNom(),gaulois.getForce(),gaulois.getEffetPotion());
+	 
+			if (gaulois instanceof Chef) {
+				for(int i=0;i<nbVillageoisMaximum;i++) {
+					if(villageois[i] == null) {
+	                villageois[i] = ajouterChef;
 					nbVillageois++;
-					System.out.println("Le villageois " + gaulois.getNom() + " à était ajouté à la liste du village!");
-	                break; // exit the loop once the new villager has been added
-
+					System.out.println("Le Chef " + gaulois.getNom() + " à était ajouté à la liste du village!");
+	                break; // exit the loop once the new chef has been added
+					}
 				}
 			}
-		} else {
+            else { //Gaulois
+            	
+            	
+				for(int i=0;i<nbVillageoisMaximum;i++) {
+					if(villageois[i] == null) {
+	                villageois[i] = ajouterGaulois;
+					nbVillageois++;
+					System.out.println("Le Gaulois " + gaulois.getNom() + " à était ajouté à la liste du village!");
+	                break; // exit the loop once the new gaulois has been added
+					}
+				}
+            }
+		}
+			
+		 else {
 			System.out.println("Le villageois " + gaulois.getNom() + " n'a pas était ajouté à la liste du village!");
 		}
 	
@@ -68,9 +85,20 @@ public class Village {
 	}
 	
 	public void afficherVillageois() {
-		System.out.println("Les membres du village:");
+		
+		System.out.println("Les Chefs du village:");
 	    for (int i = 0; i < nbVillageois; i++) {
-	        System.out.println("-" + villageois[i].getNom());
+	    	if (villageois[i] instanceof Chef) {
+		        System.out.println("-" + villageois[i].getNom());
+			}
+	    }
+	    
+		System.out.println("Les membres du village:");
+	    for(int i = 0; i < nbVillageois; i++) {
+	    	if (!(villageois[i] instanceof Chef)) {
+		        System.out.println("-" + villageois[i].getNom());
+			}
+	    	
 	    }
 	}
 	
@@ -87,11 +115,10 @@ public class Village {
 		
 	    Village village = new Village();
 	    
-	    //TODO ajouterChef
-	    // I can't add a Chef to the village since ajouterHabitant only adds gaulois types
-	    // I think maybe there is one way to do it in a single function or i can create ajouterChef method
-		Chef Abraracourcix = new Chef("Abraracourcix",6,village);
 
+		Chef Abraracourcix = new Chef("Abraracourcix",6,1,village);
+	    village.ajouterHabitant(Abraracourcix);
+		
 	    Gaulois habitant1 = new Gaulois("Asterix",10,2);
 	    village.ajouterHabitant(habitant1);
 	    Gaulois habitant2 = new Gaulois("Obelix",12,3);
