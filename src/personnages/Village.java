@@ -121,7 +121,7 @@ public class Village {
 		
 	    Gaulois habitant1 = new Gaulois("Asterix",10,2);
 	    village.ajouterHabitant(habitant1);
-	    Gaulois habitant2 = new Gaulois("Obelix",12,3);
+	    Gaulois habitant2 = new Gaulois("Obelix",25,3);
 	    village.ajouterHabitant(habitant2);
 	    
 	    village.afficherVillageois();
