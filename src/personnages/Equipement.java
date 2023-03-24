@@ -5,7 +5,7 @@ public enum Equipement {
     CASQUE("Casque"),
     BOUCLIER("Bouclier");
 
-    private final String name;
+    private String name;
 
     Equipement(String name) {
         this.name = name;
@@ -18,10 +18,11 @@ public enum Equipement {
 	@Override
 	public String toString() {
 		
-		return "Equipment [ " + CASQUE + ", " + BOUCLIER + " ]";
+		return "Equipment [ " + name + " ]";
 	}
 	
 	public static void main(String[] args) {
-		
+	    System.out.println(Equipement.CASQUE); // prints "Equipment [ Casque ]"
+	    System.out.println(Equipement.BOUCLIER); // prints "Equipment [ Bouclier ]"
 	}
 }
