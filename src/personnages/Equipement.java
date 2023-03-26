@@ -3,7 +3,9 @@ package personnages;
 public enum Equipement {
 	
     CASQUE("Casque"),
-    BOUCLIER("Bouclier");
+    BOUCLIER("Bouclier"),
+    EMPTY("Empty") 
+    ;
 
     private String name;
 

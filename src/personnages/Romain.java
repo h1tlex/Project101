@@ -5,22 +5,18 @@ public class Romain {
 
 	private String nom;
 	private int force;
-	private Equipement[] equipement = new Equipement[2];
+	private Equipement[] equipement = new Equipement[] {Equipement.EMPTY,Equipement.EMPTY};
 	private int nbEquipement = 0;
-	private Equipement equipement1;
-	private Equipement equipement2;
 
 
 	
 	
-	public Romain(String nom, int force, Equipement[] equipement, Equipement equipement1, Equipement equipement2) {
+	public Romain(String nom, int force, Equipement[] equipement) {
 		
 		this.nom = nom;
 		assert force > 0 : "Force must be positive in constructor";
 		this.force = force;
 		this.equipement=equipement;
-		this.equipement1=equipement1;
-		this.equipement2=equipement2;
 	}
 
 	
@@ -105,7 +101,7 @@ public class Romain {
 			}
 	}
 	
-	public void sEquiper(Equipement[] inventory, Equipement item) {
+	public Equipement[] sEquiper(Equipement[] inventory, Equipement item) {
 		switch (inventoryScan(inventory)) {
 			case 0: //full inventory
 				System.out.println("Le soldat " + nom + " est déjà bien protégé !");
@@ -114,12 +110,12 @@ public class Romain {
 				switch (itemType(item)) {
 					case 0: // item is casque
 						System.out.println("Le soldat " + nom + " possède déjà un casque !");
-						break;
+						return inventory;
 					default: // item is bouclier
 						inventory[1]=item;
 						nbEquipement++;
 						System.out.println("Le soldat " + nom + " s’équipe avec un bouclier !");		
-						break;
+						return inventory;
 				}
 			case 2: // bouclier/none
 				switch (itemType(item)) {
@@ -127,21 +123,21 @@ public class Romain {
 						inventory[1]=item;
 						nbEquipement++;
 						System.out.println("Le soldat " + nom + " s’équipe avec un casque !");	
-						break;
+						return inventory;
 					default: // item is bouclier
 						System.out.println("Le soldat " + nom + " possède déjà un bouclier !");
-						break;	
+						return inventory;
 				}
 			case 3: // none/casque
 				switch (itemType(item)) {
 					case 0: // item is casque
 						System.out.println("Le soldat " + nom + " possède déjà un casque !");
-						break;
+						return inventory;
 					default: // item is bouclier
 						inventory[0]=item;
 						nbEquipement++;
 						System.out.println("Le soldat " + nom + " s’équipe avec un bouclier !");		
-						break;
+						return inventory;
 				}
 			case 4: // none/bouclier
 				switch (itemType(item)) {
@@ -149,10 +145,10 @@ public class Romain {
 						inventory[0]=item;
 						nbEquipement++;
 						System.out.println("Le soldat " + nom + " s’équipe avec un casque !");	
-						break;
+						return inventory;
 					default: // item is bouclier
 						System.out.println("Le soldat " + nom + " possède déjà un bouclier !");
-						break;	
+						return inventory;
 				}
 			default: //empty inventory
 				switch (itemType(item)) {
@@ -160,23 +156,32 @@ public class Romain {
 						inventory[0]=item;
 						nbEquipement++;
 						System.out.println("Le soldat " + nom + " s’équipe avec un casque !");	
-						break;
+						return inventory;
 					default: // item is bouclier
 						inventory[0]=item;
 						nbEquipement++;
 						System.out.println("Le soldat " + nom + " s’équipe avec un bouclier !");		
-						break;
+						return inventory;
 			}
-				
 		}
+		return inventory;
 	}
 	
 	public static void main(String[] args) {
-		
-		Romain Minus = new Romain ("Minus",6,equipement,Equipement.CASQUE,Equipement.BOUCLIER);
+		Romain Minus;
+		Equipement[] equipement = new Equipement[] {Equipement.EMPTY,Equipement.EMPTY};
+		Minus = new Romain ("Minus",6,equipement);
 		assert(Minus.force>0);
+		
+		Minus.sEquiper(Minus.equipement,Equipement.CASQUE);
+		Minus.sEquiper(Minus.equipement,Equipement.CASQUE);
+		Minus.sEquiper(Minus.equipement,Equipement.BOUCLIER);
+		Minus.sEquiper(Minus.equipement,Equipement.BOUCLIER);
 
-		System.out.println("Romain: " + Minus.getNom() + ", Force: " + Minus.force + ", Equipement: " + Minus.equipement1 + " + " +Minus.equipement2);
+		
+
+
+		System.out.println("Romain: " + Minus.getNom() + ", Force: " + Minus.force + ", INVENTORY: " + Minus.equipement[0] + " + " +Minus.equipement[1]);
 
 		
 	}
