@@ -8,11 +8,10 @@ public class Druide {
 	private int effetPotionMax;
 	private int forcePotion = 1;
 	
-	public Druide(String nom, int effetPotionMin, int effetPotionMax, int forcePotion) {
+	public Druide(String nom, int effetPotionMin, int effetPotionMax) {
 		this.nom = nom;
 		this.effetPotionMin = effetPotionMin;
 		this.effetPotionMax = effetPotionMax;
-		this.forcePotion = forcePotion;
 
 		parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller d'une force " + effetPotionMin + " � "
 				+ effetPotionMax + ".");
@@ -90,13 +89,13 @@ public class Druide {
 	}
 	
 	public static void main(String[] args) {
-		Druide Panoramix;
-		Gaulois Obelix;
-		Obelix= new Gaulois ("Obelix",8,1);
-		Panoramix= new Druide ("Panoramix",5,10,3);
-		Panoramix.preparerPotion(Panoramix.getEffetPotionMin(),Panoramix.effetPotionMax);
-		Panoramix.booster(Obelix,Panoramix);
-		System.out.println(Panoramix);
+		Druide panoramix;
+		Gaulois obelix;
+		obelix= new Gaulois ("Obelix",8,1);
+		panoramix= new Druide ("Panoramix",5,10);
+		panoramix.preparerPotion(panoramix.getEffetPotionMin(),panoramix.effetPotionMax);
+		panoramix.booster(obelix,panoramix);
+		System.out.println(panoramix);
 		
 	}
 

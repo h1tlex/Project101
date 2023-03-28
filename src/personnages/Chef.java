@@ -14,7 +14,7 @@ public class Chef extends Gaulois {
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "<" + texte + ">");
 	}
-
+	
 	private String prendreParole() {
 		return "Le chef " + getNom() + " du village " + village.getNom() + " : ";
 	}
