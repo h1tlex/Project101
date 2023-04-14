@@ -4,7 +4,7 @@ public enum Equipement {
 	
     CASQUE("Casque"),
     BOUCLIER("Bouclier"),
-    EMPTY("Empty") 
+    
     ;
 
     private String name;

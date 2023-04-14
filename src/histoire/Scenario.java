@@ -4,14 +4,13 @@ import personnages.Druide;
 import personnages.Equipement;
 import personnages.Gaulois;
 import personnages.Romain;
-import villagegaulois.Musee;
 
 public class Scenario {
 
 	public static void main(String[] args) {
 		Druide druide = new Druide("Panoramix", 5, 10);
 		druide.parler("Je vais aller préparer une petite potion...");
-		druide.preparerPotion(5,10);
+		druide.preparerPotion();
 		Gaulois obelix = new Gaulois("Obélix", 25);
 		Gaulois asterix = new Gaulois("Astérix", 8);
 		druide.booster(obelix,druide);
